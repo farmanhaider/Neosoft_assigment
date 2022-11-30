@@ -19,8 +19,7 @@ const registration = (req, res) => {
   }
 };
 const login = (req, res) => {
-  let { uname, password, email, age, city } = req.body;
-  var fs = require("fs");
+  let { password, email } = req.body;
   if (fs.existsSync(`./users/${email}.txt`)) {
     fs.readFile(`./users/${email}.txt`, (err, data) => {
       if (err) throw err;

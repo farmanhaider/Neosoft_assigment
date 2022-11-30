@@ -22,7 +22,13 @@ const server = http.createServer((req, res) => {
         res.end();
       });
     } else {
-      fs.writeFile("JS.txt", "Welcome to the neosoft 1 file", (err) => {
+       fs.readFile("./htmls/create.html", (err, data) => {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(data);
+        res.end();
+       });
+      let data =req.body.input;
+      fs.writeFile("JS.txt",`${data}`, (err) => {
         if (err) throw err;
         else {
           fs.readFile("./htmls/File_created.html", (err, data) => {
